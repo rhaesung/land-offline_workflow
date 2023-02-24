@@ -49,7 +49,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#background-information">1.1. Background Information</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#unified-forecast-system-ufs">1.1.1. Unified Forecast System (UFS)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#history-of-noah-mp">1.1.2. History of Noah-MP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noah-mp">1.1.2. Noah-MP</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#disclaimer">1.2. Disclaimer</a></li>
@@ -57,7 +57,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="TechnicalOverview.html">2. Technical Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Model_v0.html">3. Noah-MP Land Surface Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Model.html">3. Noah-MP Land Surface Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DASystem.html">4. Land Data Assimilation System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Glossary.html">5. Glossary</a></li>
 </ul>
@@ -78,7 +78,7 @@
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active"><span class="section-number">1. </span>Introduction</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/Introduction_v0.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/Introduction.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -103,7 +103,7 @@ Thus, this User’s Guide focuses primarily on the snow DA process.</p>
 <div><ul class="simple">
 <li><p>This chapter (Introduction) provides background information on the Unified Forecast System (<a class="reference internal" href="Glossary.html#term-ufs"><span class="xref std std-term">UFS</span></a>) and the NoahMP model.</p></li>
 <li><p><a class="reference internal" href="TechnicalOverview.html#techoverview"><span class="std std-numref">Chapter 2</span></a> (Technical Overview) outlines prerequisites, user support levels, and directory structure.</p></li>
-<li><p><a class="reference internal" href="Model_v0.html#model"><span class="std std-numref">Chapter 3</span></a> (Model) provides practical information on building and running the Noah-MP Land Surface Model (LSM) and using the Vector-to-Tile Converter.</p></li>
+<li><p><a class="reference internal" href="Model.html#model"><span class="std std-numref">Chapter 3</span></a> (Model) provides practical information on building and running the Noah-MP Land Surface Model (LSM) and using the Vector-to-Tile Converter.</p></li>
 <li><p><a class="reference internal" href="Glossary.html#glossary"><span class="std std-numref">Chapter 5</span></a> (Glossary) lists important terms.</p></li>
 </ul>
 </div></blockquote>
@@ -143,68 +143,35 @@ This transition will contribute to:</p>
 </div></blockquote>
 <p>For more information about the UFS, visit the <a class="reference external" href="https://ufscommunity.org/">UFS Portal</a>.</p>
 </div>
-<div class="section" id="history-of-noah-mp">
-<span id="noahmp"></span><h3><span class="section-number">1.1.2. </span>History of Noah-MP<a class="headerlink" href="#history-of-noah-mp" title="Permalink to this headline"></a></h3>
-<p>Noah-MP is a land surface model (LSM) that has evolved through community
-efforts to pursue and refine a modern-era LSM suitable for use in the
-National Centers for Environmental Prediction (NCEP) operational weather
-and climate prediction models. In the 1990s, NCEP compared four LSMs, and the results of this comparison are detailed in <span id="id1">Chen <em>et al.</em> [<a class="reference internal" href="#id7" title="F. Chen, K. Mitchell, J. Schaake, Y. Xue, H.L. Pan, V. Koren, Q.Y. Duan, M. Ek, and A. Betts. Modeling of land surface evaporation by four schemes and comparison with fife observations. Journal of Geophysical Research, 101(D3):7251–7268, 1996.">CMS+96</a>]</span>. The Environmental Modeling
-Center (EMC) of NCEP chose the Oregon State University (OSU) LSM (<span id="id2">Mahrt and Pan [<a class="reference internal" href="#id10" title="Mahrt, L. and H. Pan. A two-layer model of soil hydrology. Boundary-Layer Meteorology, 1984. doi:10.1007/BF00119116.">MP84</a>]</span>) based on its performance and EMC staff members’ previous experience with
-this LSM.
-NCEP used this LSM to refine and implement NCEP regional and global
-coupled weather and climate models along with their data assimilation
-systems. In 2000, NCEP/EMC coined the name “Noah” for the LSM that had
-emerged at NCEP during the 1990s. It stands for:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>N:</strong> National Centers for Environmental Prediction (NCEP)</p></li>
-<li><p><strong>O:</strong> Oregon State University (Department of Atmospheric Sciences)</p></li>
-<li><p><strong>A:</strong> Air Force (both Air Force Weather Agency (AFWA) and Air Force Research Lab (AFRL) — formerly AFGL, PL)</p></li>
-<li><p><strong>H:</strong> Hydrology Lab — NWS (National Weather Service, formerly Office of Hydrology — OH)</p></li>
-</ul>
-</div></blockquote>
-<p>The “NOAH” acronym explicitly acknowledged both the multi-group heritage and
-informal “community” usage of this LSM, going back to the early 1980s.
-Since its inception, NOAH LSM has evolved due to significant ongoing development
-efforts by the above groups.</p>
-<p>Noah LSM is a stand-alone, uncoupled, one-dimensional (1-D) column model
-used to execute single-site land surface simulations. In this traditional 1-D
-uncoupled mode, near-surface atmospheric forcing data is required as input
-forcing. This LSM simulates soil moisture (both liquid and frozen), soil
-temperature, skin temperature, snow depth, snow water equivalent (SWE),
-snow density, canopy water content, and the energy flux and water flux
-terms of the surface energy balance and surface water balance. Noah LSM
-has been extensively evaluated in both the offline mode and the coupled
-mode. More detailed descriptions of Noah physics and developments are
-presented by <span id="id3">Ek <em>et al.</em> [<a class="reference internal" href="#id8" title="M.B. Ek, K. Mitchell, and Y. Lin. Implementation of noah land surface model advances in the national centers for environmental prediction operational mesoscale eta model. Journal of Geophysical Research, 2003. doi:10.1029/2002JD003296.">EKML03</a>]</span> 2003 and <span id="id4">Koren <em>et al.</em> [<a class="reference internal" href="#id9" title="V. Koren, J. Schaake, K. Mitchell, Q.Y. Duan, F. Chen, and J.M. Baker. A parameterization of snowpack and frozen ground intended for ncep weather and climate models. Journal of Geophysical Research, 104(D16):19569–19585, 1999. doi:10.1029/1999JD900232.">KSM+99</a>]</span> 1999.</p>
-<p>Noah-MP is currently used operationally by the NOAA National Water Model
-(NWM), which is built upon the legacy of the Noah model, but with
-multiple new options for selected processes, including:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>a separated vegetation canopy accounting for vegetation effects on surface energy and water balances,</p></li>
-<li><p>a modified two-stream approximation scheme to include the effects of vegetation canopy gaps that vary with solar zenith angle and the canopy 3-D structure on radiation transfer,</p></li>
-<li><p>a 3-layer physically-based snow model,</p></li>
-<li><p>a more permeable frozen soil by separating a grid cell into a permeable fraction and impermeable fraction,</p></li>
-<li><p>a simple groundwater model with a TOPMODEL-based runoff scheme, and</p></li>
-<li><p>a short-term leaf phenology model.</p></li>
-</ol>
-</div></blockquote>
-<p>Multiple parameterizations are the key to treating
-hydrology-snow-vegetation processes in a single land modeling framework,
-and structural differences improve performance over heterogeneous
-surfaces. In addition, Noah-MP LSM enables a modular framework for
-diagnosing differences in process representation, facilitating ensemble
-forecasts and uncertainty quantification, and choosing process
-presentations appropriate for the application. On the basis of the
-modified Noah, the developers designed options of schemes for leaf
-dynamics, radiation transfer, stomatal resistance, soil moisture stress
-factor for stomatal resistance, aerodynamic resistance, runoff,
-snowfall, snow surface albedo, supercooled liquid water in frozen soil,
-and frozen soil permeability, etc. A collaborative effort among NCAR,
-NCEP, NASA, and university groups has been established to develop and
-improve the community Noah-MP LSM. Details about the model’s physical
-parameterizations can be found in <span id="id5">Niu <em>et al.</em> [<a class="reference internal" href="#id16" title="G.-Y. Niu, Z.-L. Yang, K.E. Mitchell, F. Chen, M.B. Ek, M. Barlage, A. Kumar, K. Manning, D. Niyogi, E. Rosero, M. Tewari, and Y. Xia. Simple water balance model for estimating runoff at different spatial and temporal scales. Journal of Geophysical Research, 2011. doi:10.1029/2010JD015139.">NYM+11</a>]</span>.</p>
+<div class="section" id="noah-mp">
+<span id="noahmp"></span><h3><span class="section-number">1.1.2. </span>Noah-MP<a class="headerlink" href="#noah-mp" title="Permalink to this headline"></a></h3>
+<p>The Noah-MP land surface model (LSM) is a stand-alone, uncoupled, single
+column model used to execute single-site land surface simulations.
+In this traditional one-dimensional (1-D) uncoupled mode, near-surface atmospheric
+forcing data is required as input forcing. This LSM simulates soil moisture
+(both liquid and frozen), soil temperature, skin temperature, snow depth,
+snow water equivalent (SWE), snow density, canopy water content, and the energy
+flux and water flux terms of the surface energy balance and surface water balance.</p>
+<p>Noah-MP uses a big-leaf approach with a separated vegetation canopy accounting
+for vegetation effects on surface energy and water balances, a modified two-stream
+approximation scheme to include the effects of vegetation canopy gaps that vary
+with solar zenith angle and the canopy 3-D structure on radiation transfer,
+a 3-layer physically-based snow model, a more permeable frozen soil by separating
+a grid cell into a permeable fraction and impermeable fraction, a simple
+groundwater model with a TOPMODEL-based runoff scheme, and a short-term leaf
+phenology model. Noah-MP LSM enables a modular framework for diagnosing differences
+in process representation, facilitating ensemble forecasts and uncertainty
+quantification, and choosing process presentations appropriate for the application.
+Noah-MP developers designed multiple parameterization options for leaf dynamics,
+radiation transfer, stomatal resistance, soil moisture stress factor for stomatal
+resistance, aerodynamic resistance, runoff, snowfall, snow surface albedo,
+supercooled liquid water in frozen soil, and frozen soil permeability. A
+collaborative effort among NCAR, NCEP, NASA, and university groups has been
+established to develop and improve the community Noah-MP LSM. Details about the
+model’s physical parameterizations can be found in <span id="id1">Niu <em>et al.</em> [<a class="reference internal" href="#id12" title="G.-Y. Niu, Z.-L. Yang, K.E. Mitchell, F. Chen, M.B. Ek, M. Barlage, A. Kumar, K. Manning, D. Niyogi, E. Rosero, M. Tewari, and Y. Xia. Simple water balance model for estimating runoff at different spatial and temporal scales. Journal of Geophysical Research, 2011. doi:10.1029/2010JD015139.">NYM+11</a>]</span> (2011).</p>
+<p>Noah-MP has been implemented in the UFS via the <a class="reference internal" href="Glossary.html#term-ccpp"><span class="xref std std-term">CCPP</span></a> physics package and
+is currently being tested for operational use in GFSv17 and RRFS v2. Noah-MP has
+also been used operationally in the NOAA National Water Model (NWM) since 2016.</p>
 </div>
 </div>
 <div class="section" id="disclaimer">
@@ -225,67 +192,64 @@ commercial product or activity by DOC or the United States Government.</p>
 </div>
 <div class="section" id="references">
 <h2><span class="section-number">1.3. </span>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
-<div class="docutils container" id="id6">
+<div class="docutils container" id="id2">
 <dl class="citation">
-<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id1">CMS+96</a></span></dt>
-<dd><p>F. Chen, K. Mitchell, J. Schaake, Y. Xue, H.L. Pan, V. Koren, Q.Y. Duan, M. Ek, and A. Betts. Modeling of land surface evaporation by four schemes and comparison with fife observations. <em>Journal of Geophysical Research</em>, 101(D3):7251–7268, 1996.</p>
-</dd>
-<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id3">EKML03</a></span></dt>
-<dd><p>M.B. Ek, K. Mitchell, and Y. Lin. Implementation of noah land surface model advances in the national centers for environmental prediction operational mesoscale eta model. <em>Journal of Geophysical Research</em>, 2003. <a class="reference external" href="https://doi.org/10.1029/2002JD003296">doi:10.1029/2002JD003296</a>.</p>
-</dd>
-<dt class="label" id="id14"><span class="brackets">FMMW+07</span></dt>
+<dt class="label" id="id10"><span class="brackets">FMMW+07</span></dt>
 <dd><p>Y. Fan, G. Miguez-Macho, C.P. Weaver, R. Walko, and A. Robock. Incorporating water table dynamics in climate modeling: 1. water table observations and equilibrium water table simulations. <em>Journal of Geophysical Research</em>, 112(D10):19569–19585, 2007. <a class="reference external" href="https://doi.org/10.1029/2006JD008111">doi:10.1029/2006JD008111</a>.</p>
 </dd>
-<dt class="label" id="id20"><span class="brackets">HVMWK20</span></dt>
+<dt class="label" id="id19"><span class="brackets">FJSWD22</span></dt>
+<dd><p>S. Frolov, J.S. Whitaker, and C. Draper. Including parameterized error covariance in local ensemble solvers: experiments in a 1d model with balance constraints. <em>Quarterly Journal of the Royal Meteorological Society</em>, 2022. <a class="reference external" href="https://doi.org/10.1002/qj.4289">doi:10.1002/qj.4289</a>.</p>
+</dd>
+<dt class="label" id="id16"><span class="brackets">HVMWK20</span></dt>
 <dd><p>D. Holdaway, G. Vernieres, M. Wlasak, and S. King. Status of model interfacing in the joint effort for data assimilation integration (jedi). <em>JCSDA Quarterly Newsletter</em>, 66:15–24, 2020. <a class="reference external" href="https://doi.org/10.25923/RB19-0Q26">doi:10.25923/RB19-0Q26</a>.</p>
 </dd>
-<dt class="label" id="id21"><span class="brackets">HHZ+20</span></dt>
+<dt class="label" id="id17"><span class="brackets">HHZ+20</span></dt>
 <dd><p>R. Honeyager, S. Herbener, X. Zhang, A. Shlyaeva, and Y. Trémolet. Observations in the joint effort for data assimilation integration (jedi) — unified forward operator (ufo) and interface for observation data access (ioda). <em>JCSDA Quarterly Newsletter</em>, 66:24–33, 2020. <a class="reference external" href="https://doi.org/10.25923/RB19-0Q26">doi:10.25923/RB19-0Q26</a>.</p>
 </dd>
-<dt class="label" id="id22"><span class="brackets">HEJKS07</span></dt>
+<dt class="label" id="id18"><span class="brackets">HEJKS07</span></dt>
 <dd><p>B.R. Hunt, E.J. Kostelich, and I. Szunyogh. Efficient data assimilation for spatiotemporal chaos: a local ensemble transform kalman filter. <em>Physica D: Nonlinear Phenomena</em>, 230(1–2):112–126, 2007. <a class="reference external" href="https://doi.org/10.1016/j.physd.2006.11.008">doi:10.1016/j.physd.2006.11.008</a>.</p>
 </dd>
-<dt class="label" id="id26"><span class="brackets">Jor91</span></dt>
+<dt class="label" id="id23"><span class="brackets">Jor91</span></dt>
 <dd><p>R. Jordan. A one-dimensional temperature model for a snow cover: technical documentation for sntherm.89. Technical Report Special Rep. 91-16, U.S. Army Cold Regions Research and Engineering Laboratory, Hanover, NH, October 1991.</p>
 </dd>
-<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id4">KSM+99</a></span></dt>
+<dt class="label" id="id5"><span class="brackets">KSM+99</span></dt>
 <dd><p>V. Koren, J. Schaake, K. Mitchell, Q.Y. Duan, F. Chen, and J.M. Baker. A parameterization of snowpack and frozen ground intended for ncep weather and climate models. <em>Journal of Geophysical Research</em>, 104(D16):19569–19585, 1999. <a class="reference external" href="https://doi.org/10.1029/1999JD900232">doi:10.1029/1999JD900232</a>.</p>
 </dd>
-<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id2">MP84</a></span></dt>
-<dd><p>Mahrt, L. and H. Pan. A two-layer model of soil hydrology. <em>Boundary-Layer Meteorology</em>, 1984. <a class="reference external" href="https://doi.org/10.1007/BF00119116">doi:10.1007/BF00119116</a>.</p>
-</dd>
-<dt class="label" id="id13"><span class="brackets">MMFW+07</span></dt>
+<dt class="label" id="id9"><span class="brackets">MMFW+07</span></dt>
 <dd><p>G. Miguez-Macho, Y. Fan, C.P. Weaver, R. Walko, and A. Robock. Incorporating water table dynamics in climate modeling: 2. formulation, validation, and soil moisture simulation. <em>Journal of Geophysical Research</em>, 2007. <a class="reference external" href="https://doi.org/10.1029/2006JD008112">doi:10.1029/2006JD008112</a>.</p>
 </dd>
-<dt class="label" id="id12"><span class="brackets">NYD+07</span></dt>
+<dt class="label" id="id8"><span class="brackets">NYD+07</span></dt>
 <dd><p>G. Y. Niu, Z. L. Yang, R. E. Dickinson, L. E. Gulden, and H. Su. Development of a simple groundwater model for use in climate models and evaluation with gravity recovery and climate experiment data. <em>Journal of Geophysical Research</em>, 2007. <a class="reference external" href="https://doi.org/10.1029/2006JD007522">doi:10.1029/2006JD007522</a>.</p>
 </dd>
-<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id5">NYM+11</a></span></dt>
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id1">NYM+11</a></span></dt>
 <dd><p>G.-Y. Niu, Z.-L. Yang, K.E. Mitchell, F. Chen, M.B. Ek, M. Barlage, A. Kumar, K. Manning, D. Niyogi, E. Rosero, M. Tewari, and Y. Xia. Simple water balance model for estimating runoff at different spatial and temporal scales. <em>Journal of Geophysical Research</em>, 2011. <a class="reference external" href="https://doi.org/10.1029/2010JD015139">doi:10.1029/2010JD015139</a>.</p>
 </dd>
-<dt class="label" id="id11"><span class="brackets">NYREDG05</span></dt>
+<dt class="label" id="id7"><span class="brackets">NYREDG05</span></dt>
 <dd><p>G.-Y. Niu, Z.-L. Yang, R.E. Dickinson, and L.E. Gulden. A simple topmodel-based runoff parameterization (simtop) for use in gcms. <em>Journal of Geophysical Research</em>, 2005. <a class="reference external" href="https://doi.org/10.1029/2005JD006111">doi:10.1029/2005JD006111</a>.</p>
 </dd>
-<dt class="label" id="id17"><span class="brackets">NY06</span></dt>
+<dt class="label" id="id13"><span class="brackets">NY06</span></dt>
 <dd><p>G.Y. Niu and Z.L. Yang. Effects of frozen soil on snowmelt runoff and soil water storage at a continental scale. <em>Journal of Hydrometeorology</em>, 7(5):937–952, 2006. <a class="reference external" href="https://doi.org/10.1175/JHM538.1">doi:10.1175/JHM538.1</a>.</p>
 </dd>
-<dt class="label" id="id18"><span class="brackets">SZ09</span></dt>
+<dt class="label" id="id14"><span class="brackets">SZ09</span></dt>
 <dd><p>K. Sakaguchi and X. Zeng. Effects of soil wetness, plant litter, and under-canopy atmospheric stability on ground evaporation in the community land model (clm3.5). <em>Journal of Geophysical Research</em>, 2009. <a class="reference external" href="https://doi.org/10.1029/2008JD010834">doi:10.1029/2008JD010834</a>.</p>
 </dd>
-<dt class="label" id="id15"><span class="brackets">SKD+96</span></dt>
+<dt class="label" id="id11"><span class="brackets">SKD+96</span></dt>
 <dd><p>J.C. Schaake, V.I. Koren, Q.-Y. Duan, K.E. Mitchell, and F. Chen. Simple water balance model for estimating runoff at different spatial and temporal scales. <em>Journal of Geophysical Research</em>, 101(D3):7461–7475, 1996. <a class="reference external" href="https://doi.org/10.1029/95JD02892">doi:10.1029/95JD02892</a>.</p>
 </dd>
-<dt class="label" id="id19"><span class="brackets">SMDHH92</span></dt>
+<dt class="label" id="id15"><span class="brackets">SMDHH92</span></dt>
 <dd><p>P.J. Sellers, M.D. Heiser, and F.G. Hall. Relations between surface conductance and spectral vegetation indices at intermediate (100 m2 to 15 km2) length scales. <em>Journal of Geophysical Research</em>, 97(D17):19033–19059, 1992. <a class="reference external" href="https://doi.org/10.1029/92JD01096">doi:10.1029/92JD01096</a>.</p>
 </dd>
-<dt class="label" id="id23"><span class="brackets">TA20</span></dt>
+<dt class="label" id="id20"><span class="brackets">TA20</span></dt>
 <dd><p>Trémolet, Y. and T. Auligné. The joint effort for data assimilation integration (jedi). <em>JCSDA Quarterly Newsletter</em>, 66:1–5, 2020. <a class="reference external" href="https://doi.org/10.25923/RB19-0Q26">doi:10.25923/RB19-0Q26</a>.</p>
 </dd>
-<dt class="label" id="id24"><span class="brackets">WH12</span></dt>
+<dt class="label" id="id21"><span class="brackets">WH12</span></dt>
 <dd><p>Whitaker, J.S. and T.M. Hamill. Evaluating methods to account for system errors in ensemble data assimilation. <em>Monthly Weather Review</em>, 140(9):3078–3089, 2012. <a class="reference external" href="https://doi.org/10.1175/MWR-D-11-00276.1">doi:10.1175/MWR-D-11-00276.1</a>.</p>
 </dd>
-<dt class="label" id="id25"><span class="brackets">ZCSS04</span></dt>
+<dt class="label" id="id22"><span class="brackets">ZCSS04</span></dt>
 <dd><p>F. Zhang, C. Snyder, and J. Sun. Impacts of initial estimate and observation availability on convective-scale data assimilation with an ensemble kalman filter. <em>Monthly Weather Review</em>, 132(5):1238–1253, 2004. <a class="reference external" href="https://doi.org/10.1175/1520-0493(2004)132%3C1238:IOIEAO%3E2.0.CO;2">doi:10.1175/1520-0493(2004)132%3C1238:IOIEAO%3E2.0.CO;2</a>.</p>
+</dd>
+<dt class="label" id="id24"><span class="brackets">USNICenter08</span></dt>
+<dd><p>U.S. National Ice Center. <em>User's Guide: IMS Daily Northern Hemisphere Snow and Ice Analysis at 1 km, 4 km, and 24 km Resolutions, Version 1</em>. National Snow and Ice Data Center, Boulder, Colorado, USA, 2008. <a class="reference external" href="https://doi.org/https://doi.org/10.7265/N52R3PMC">doi:https://doi.org/10.7265/N52R3PMC</a>.</p>
 </dd>
 </dl>
 </div>
